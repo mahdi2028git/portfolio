@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahdi | Portfolio</title>
+  <meta name="description" content="Full-Stack Developer portfolio — English & Farsi" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --surface: #121826;
+      --surface-2: #1a2234;
+      --border: #243044;
+      --text: #e8eef9;
+      --muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --accent: #22d3ee;
+      --radius: 16px;
+      --shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    body.fa {
+      font-family: 'Vazirmatn', 'Inter', system-ui, sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1100px, 92%);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 15, 25, 0.8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--primary); }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    nav a {
+      color: var(--muted);
+      transition: color .2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .lang-switch {
+      display: flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .lang-switch button {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .lang-switch button.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-content .title {
+      font-size: 1.25rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-content p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all .2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .avatar-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--surface);
+    }
+
+    /* Sections */
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .card:hover {
+      border-color: #334155;
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .skill {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .project-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-body h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    /* Contact */
+    .contact-box {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 0.75rem 0 1.75rem;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 3rem;
+      }
+      .hero-content p { margin-inline: auto; }
+      .cta-row { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      .avatar { width: 180px; height: 180px; }
+    }
+
+    /* RTL adjustments */
+    [dir="rtl"] .hero-content p,
+    [dir="rtl"] .section-sub {
+      max-width: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Mahdi<span>.</span></div>
+      <nav>
+        <ul>
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+          <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-fa" onclick="setLang('fa')">فا</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero container">
+      <div class="hero-content">
+        <h1 data-i18n="hero_name">Mahdi</h1>
+        <div class="title" data-i18n="hero_title">Full-Stack Developer</div>
+        <p data-i18n="hero_bio">I build modern, practical web applications for businesses — with clean architecture, great UX, and full multi-language support including Farsi (RTL).</p>
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary" data-i18n="btn_projects">View Projects</a>
+          <a href="https://github.com/mahdi2028git" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/353093353?v=4" alt="Mahdi" />
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title" data-i18n="about_title">About Me</h2>
+        <p class="section-sub" data-i18n="about_sub">A developer focused on real-world business tools and multi-language experiences.</p>
+        <div class="about-grid">
+          <div class="card">
+            <h3 data-i18n="about_card1_title">What I do</h3>
+            <p data-i18n="about_card1_text">I design and develop full-stack web applications — from management dashboards to public-facing multi-language websites. I care about performance, accessibility, and clean code.</p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="about_card2_title">What I love</h3>
+            <p data-i18n="about_card2_text">Building tools that solve real problems for businesses (especially in clothing, tailoring and medical textiles) and creating seamless experiences in both LTR and RTL languages.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title" data-i18n="skills_title">Skills & Technologies</h2>
+        <p class="section-sub" data-i18n="skills_sub">Technologies I work with regularly.</p>
+        <div class="skills-grid">
+          <span class="skill">Laravel</span>
+          <span class="skill">PHP</span>
+          <span class="skill">Angular</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">FastAPI</span>
+          <span class="skill">Python</span>
+          <span class="skill">Tailwind CSS</span>
+          <span class="skill">MySQL</span>
+          <span class="skill">REST APIs</span>
+          <span class="skill">Multi-language & RTL</span>
+          <span class="skill">Git & GitHub</span>
+          <span class="skill">HTML / CSS / JS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title" data-i18n="projects_title">Projects</h2>
+        <p class="section-sub" data-i18n="projects_sub">Selected work I've built recently.</p>
+        <div class="projects-grid">
+          <!-- MediTailor -->
+          <article class="project-card">
+            <div class="project-body">
+              <h3>MediTailor</h3>
+              <p data-i18n="proj1_desc">Full-stack hospital clothing factory website. Angular 19 frontend + FastAPI backend with multi-language support (English, Farsi, Arabic, Turkish) and full RTL.</p>
+              <div class="tags">
+                <span class="tag">Angular 19</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Multi-lang</span>
+                <span class="tag">RTL</span>
+              </div>
+              <a class="project-link" href="https://github.com/mahdi2028git/meditailor" target="_blank" rel="noopener">
+                <span data-i18n="view_repo">View on GitHub</span> →
+              </a>
+            </div>
+          </article>
+
+          <!-- Modern Tailor -->
+          <article class="project-card">
+            <div class="project-body">
+              <h3>Modern Tailor</h3>
+              <p data-i18n="proj2_desc">Complete tailoring shop management system. Manage customers, measurements, orders, fittings, payments and staff from one clean dashboard.</p>
+              <div class="tags">
+                <span class="tag">Laravel 11</span>
+                <span class="tag">Tailwind</span>
+                <span class="tag">Alpine.js</span>
+                <span class="tag">MySQL</span>
+              </div>
+              <a class="project-link" href="https://github.com/mahdi2028git/modern-tailor" target="_blank" rel="noopener">
+                <span data-i18n="view_repo">View on GitHub</span> →
+              </a>
+            </div>
+          </article>
+
+          <!-- Imed Manager -->
+          <article class="project-card">
+            <div class="project-body">
+              <h3>Imed Manager</h3>
+              <p data-i18n="proj3_desc">Lightweight management application focused on efficiency and simplicity for day-to-day operations.</p>
+              <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">UI</span>
+              </div>
+              <a class="project-link" href="https://github.com/mahdi2028git/imed-manager" target="_blank" rel="noopener">
+                <span data-i18n="view_repo">View on GitHub</span> →
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2 class="section-title" data-i18n="contact_title">Let's work together</h2>
+          <p data-i18n="contact_text">I'm open to new projects and collaborations. Feel free to reach out via GitHub.</p>
+          <div class="socials">
+            <a href="https://github.com/mahdi2028git" target="_blank" rel="noopener" class="btn btn-primary">
+              GitHub
+            </a>
+            <a href="https://github.com/mahdi2028git/portfolio" target="_blank" rel="noopener" class="btn btn-outline">
+              This Portfolio
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p data-i18n="footer">© 2026 Mahdi. Built with ♥</p>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        nav_about: "About",
+        nav_skills: "Skills",
+        nav_projects: "Projects",
+        nav_contact: "Contact",
+        hero_name: "Mahdi",
+        hero_title: "Full-Stack Developer",
+        hero_bio: "I build modern, practical web applications for businesses — with clean architecture, great UX, and full multi-language support including Farsi (RTL).",
+        btn_projects: "View Projects",
+        about_title: "About Me",
+        about_sub: "A developer focused on real-world business tools and multi-language experiences.",
+        about_card1_title: "What I do",
+        about_card1_text: "I design and develop full-stack web applications — from management dashboards to public-facing multi-language websites. I care about performance, accessibility, and clean code.",
+        about_card2_title: "What I love",
+        about_card2_text: "Building tools that solve real problems for businesses (especially in clothing, tailoring and medical textiles) and creating seamless experiences in both LTR and RTL languages.",
+        skills_title: "Skills & Technologies",
+        skills_sub: "Technologies I work with regularly.",
+        projects_title: "Projects",
+        projects_sub: "Selected work I've built recently.",
+        proj1_desc: "Full-stack hospital clothing factory website. Angular 19 frontend + FastAPI backend with multi-language support (English, Farsi, Arabic, Turkish) and full RTL.",
+        proj2_desc: "Complete tailoring shop management system. Manage customers, measurements, orders, fittings, payments and staff from one clean dashboard.",
+        proj3_desc: "Lightweight management application focused on efficiency and simplicity for day-to-day operations.",
+        view_repo: "View on GitHub",
+        contact_title: "Let's work together",
+        contact_text: "I'm open to new projects and collaborations. Feel free to reach out via GitHub.",
+        footer: "© 2026 Mahdi. Built with ♥"
+      },
+      fa: {
+        nav_about: "درباره من",
+        nav_skills: "مهارت‌ها",
+        nav_projects: "پروژه‌ها",
+        nav_contact: "تماس",
+        hero_name: "مهدی",
+        hero_title: "توسعه‌دهنده فول‌استک",
+        hero_bio: "من اپلیکیشن‌های وب مدرن و کاربردی برای کسب‌وکارها می‌سازم — با معماری تمیز، تجربه کاربری عالی و پشتیبانی کامل از چندزبانگی (از جمله فارسی و راست‌چین).",
+        btn_projects: "مشاهده پروژه‌ها",
+        about_title: "درباره من",
+        about_sub: "توسعه‌دهنده‌ای متمرکز بر ابزارهای واقعی کسب‌وکار و تجربه‌های چندزبانه.",
+        about_card1_title: "چه کاری انجام می‌دهم",
+        about_card1_text: "من اپلیکیشن‌های فول‌استک طراحی و توسعه می‌دهم — از داشبوردهای مدیریتی تا وب‌سایت‌های چندزبانه عمومی. به عملکرد، دسترسی‌پذیری و کد تمیز اهمیت می‌دهم.",
+        about_card2_title: "چه چیزی دوست دارم",
+        about_card2_text: "ساخت ابزارهایی که مشکلات واقعی کسب‌وکارها را حل می‌کنند (به‌خصوص در حوزه پوشاک، خیاطی و منسوجات پزشکی) و ایجاد تجربه یکپارچه در زبان‌های چپ‌چین و راست‌چین.",
+        skills_title: "مهارت‌ها و تکنولوژی‌ها",
+        skills_sub: "تکنولوژی‌هایی که به‌طور منظم با آن‌ها کار می‌کنم.",
+        projects_title: "پروژه‌ها",
+        projects_sub: "منتخبی از کارهایی که اخیراً ساخته‌ام.",
+        proj1_desc: "وب‌سایت کامل کارخانه پوشاک بیمارستانی. فرانت‌اند Angular 19 + بک‌اند FastAPI با پشتیبانی چندزبانه (انگلیسی، فارسی، عربی، ترکی) و راست‌چین کامل.",
+        proj2_desc: "سیستم کامل مدیریت مغازه خیاطی. مدیریت مشتریان، اندازه‌ها، سفارش‌ها، پرو، پرداخت‌ها و پرسنل از یک داشبورد تمیز.",
+        proj3_desc: "اپلیکیشن مدیریت سبک و ساده با تمرکز بر کارایی برای کارهای روزمره.",
+        view_repo: "مشاهده در گیت‌هاب",
+        contact_title: "بیایید با هم کار کنیم",
+        contact_text: "آماده پروژه‌ها و همکاری‌های جدید هستم. از طریق گیت‌هاب در ارتباط باشید.",
+        footer: "© ۱۴۰۵ مهدی. ساخته شده با ♥"
+      }
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+      document.body.classList.toggle('fa', lang === 'fa');
+
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-fa').classList.toggle('active', lang === 'fa');
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+
+      localStorage.setItem('portfolio-lang', lang);
+    }
+
+    // Load saved language or default to English
+    const saved = localStorage.getItem('portfolio-lang') || 'en';
+    setLang(saved);
+  </script>
+</body>
+</html>
